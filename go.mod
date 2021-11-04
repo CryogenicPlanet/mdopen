@@ -1,4 +1,4 @@
-module github.com/romanyx/mdopen
+module github.com/cryogenicplanet/mdopen
 
 go 1.17
 
