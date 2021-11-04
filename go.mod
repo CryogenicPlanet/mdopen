@@ -1,5 +1,7 @@
 module github.com/romanyx/mdopen
 
+go 1.17
+
 require (
 	github.com/gomarkdown/markdown v0.0.0-20180831092322-0465c5af6a9b
 	github.com/pkg/errors v0.8.0

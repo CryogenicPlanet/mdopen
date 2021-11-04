@@ -19,7 +19,7 @@ const (
 func TestOpeneterOpen(t *testing.T) {
 	f := strings.NewReader(md)
 	opnr := New(echoCMD())
-	if err := opnr.Open(f); err != nil {
+	if _, err := opnr.Open(f); err != nil {
 		t.Fatalf("unexpected error: %s", err)
 	}
 }
@@ -63,7 +63,7 @@ func TestOpener_prepareFile(t *testing.T) {
 
 			if !strings.Contains(w.String(), tt.contains) {
 				t.Errorf("body does not contains expected string: %s", tt.contains)
-				if err := opnr.Open(tt.r); err != nil {
+				if _, err := opnr.Open(tt.r); err != nil {
 					t.Error(err)
 				}
 			}

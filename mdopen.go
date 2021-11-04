@@ -51,15 +51,15 @@ func New(options ...Option) *Opener {
 // Open will create a tmp file, execute layout
 // template with given markdown into it and then
 // open it in browser.
-func (opnr *Opener) Open(f io.Reader) error {
+func (opnr *Opener) Open(f io.Reader) (string, error) {
 	tmpfile, err := tmpFile()
 	if err != nil {
-		return errors.Wrap(err, "tempfile creation failed")
+		return "", errors.Wrap(err, "tempfile creation failed")
 	}
 	defer tmpfile.Close()
 
 	if err := opnr.prepareFile(tmpfile, f); err != nil {
-		return errors.Wrap(err, "tmp file perpare")
+		return "", errors.Wrap(err, "tmp file perpare")
 	}
 
 	url := fmt.Sprintf("file:///%s", tmpfile.Name())
@@ -69,10 +69,10 @@ func (opnr *Opener) Open(f io.Reader) error {
 
 	cmd := exec.Command(args[0], args[1:]...)
 	if err := cmd.Run(); err != nil {
-		return errors.Wrap(err, "open letter in the browser failed")
+		return "", errors.Wrap(err, "open letter in the browser failed")
 	}
 
-	return nil
+	return tmpfile.Name(), nil
 }
 
 func (opnr *Opener) prepareFile(w io.Writer, f io.Reader) error {
