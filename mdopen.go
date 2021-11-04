@@ -9,9 +9,9 @@ import (
 	"os/exec"
 	"runtime"
 
+	"github.com/cryogenicplanet/mdopen/internal/templates/github"
 	"github.com/gomarkdown/markdown"
 	"github.com/pkg/errors"
-	"github.com/romanyx/mdopen/internal/templates/github"
 	"github.com/tink-ab/tempfile"
 )
 

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/romanyx/mdopen/internal/templates/github"
+	"github.com/cryogenicplanet/mdopen/internal/templates/github"
 )
 
 const (
